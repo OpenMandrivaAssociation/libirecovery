@@ -15,6 +15,7 @@ License:	LGPLv2+
 Url:		http://www.libimobiledevice.org/
 Source0:	http://www.libimobiledevice.org/downloads/%{name}-%{version}.tar.xz
 BuildRequires:	pkgconfig(readline)
+BuildRequires:	pkgconfig(libimobiledevice-glue-1.0)
 
 %description
 libirecovery is a cross-platform library which implements communication to
