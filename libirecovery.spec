@@ -74,7 +74,7 @@ autoreconf -fiv
 
 %files -n irecovery
 %{_bindir}/irecovery
-/lib/udev/*
+%{_udevrulesdir}/39-libirecovery.rules
 
 
 
