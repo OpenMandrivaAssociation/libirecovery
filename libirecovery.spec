@@ -56,8 +56,9 @@ iBoot/iBSS that are found on Apple's iOS devices
 autoreconf -fiv
 
 %configure \
-	--disable-static
-
+	--disable-static \
+	--with-udevrulesdir=%{_udevrulesdir}
+	
 %make_build
 
 %install
