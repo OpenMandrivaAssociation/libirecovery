@@ -1,19 +1,24 @@
 %define major	3
 %define api	1.0
 
-%define libname %mklibname irecovery %{api} %{major}
+%define oldlibname %mklibname irecovery %{api} 3
+%define libname %mklibname irecovery %{api}
 %define devname %mklibname -d irecovery
 
-%define	git	20211124
+#define	git	20230802
 
 Summary:	Library for manipulating Apple Binary and XML Property Lists
 Name:		libirecovery
-Version:	1.0.1
-Release:	1.%{git}.0
+Version:	1.1.0
+Release:	%{?git:0.%{git}.}1
 Group:		System/Libraries
 License:	LGPLv2+
 Url:		http://www.libimobiledevice.org/
-Source0:	http://www.libimobiledevice.org/downloads/%{name}-%{version}.tar.xz
+%if 0%{?git:1}
+Source0:	https://github.com/libimobiledevice/libirecovery/archive/refs/heads/master.tar.gz#/%{name}-%{git}.tar.gz
+%else
+Source0:	https://github.com/libimobiledevice/libirecovery/releases/download/%{version}/libirecovery-%{version}.tar.bz2
+%endif
 BuildRequires:	pkgconfig(readline)
 BuildRequires:	pkgconfig(libimobiledevice-glue-1.0)
 BuildRequires:	pkgconfig(libusb-1.0)
@@ -27,6 +32,7 @@ A command-line utility named irecovery is available as a separate package.
 Group:		System/Libraries
 Summary:	Library for accessing Apple's iBoot/IBSS via usb 
 Suggests:	%{name} >= %{version}-%{release}
+%rename %{oldlibname}
 
 %description -n %{libname}
 irecovery is a library allowing access to to Apples iBoot/IBSS via usb
@@ -51,14 +57,13 @@ iBoot/iBSS that are found on Apple's iOS devices
 
 %prep
 %autosetup -p1
-
-%build
 autoreconf -fiv
 
 %configure \
 	--disable-static \
 	--with-udevrulesdir=%{_udevrulesdir}
-	
+
+%build
 %make_build
 
 %install
@@ -76,6 +81,3 @@ autoreconf -fiv
 %files -n irecovery
 %{_bindir}/irecovery
 %{_udevrulesdir}/39-libirecovery.rules
-
-
-
