@@ -19,6 +19,11 @@ Source0:	https://github.com/libimobiledevice/libirecovery/archive/refs/heads/mas
 %else
 Source0:	https://github.com/libimobiledevice/libirecovery/releases/download/%{version}/libirecovery-%{version}.tar.bz2
 %endif
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pkgconfig(readline)
 BuildRequires:	pkgconfig(libimobiledevice-glue-1.0)
 BuildRequires:	pkgconfig(libusb-1.0)
