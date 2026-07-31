@@ -9,7 +9,7 @@
 
 Summary:	Library for manipulating Apple Binary and XML Property Lists
 Name:		libirecovery
-Version:	1.1.0
+Version:	1.3.1
 Release:	%{?git:0.%{git}.}1
 Group:		System/Libraries
 License:	LGPLv2+
