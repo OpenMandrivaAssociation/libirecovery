@@ -1,4 +1,4 @@
-%define major	3
+%define major	5
 %define api	1.0
 
 %define oldlibname %mklibname irecovery %{api} 3
@@ -9,7 +9,7 @@
 
 Summary:	Library for manipulating Apple Binary and XML Property Lists
 Name:		libirecovery
-Version:	1.3.1
+Version:	1.4.0
 Release:	%{?git:0.%{git}.}1
 Group:		System/Libraries
 License:	LGPLv2+
@@ -86,3 +86,4 @@ autoreconf -fiv
 %files -n irecovery
 %{_bindir}/irecovery
 %{_udevrulesdir}/39-libirecovery.rules
+%{_datadir}/%{name}/devices.txt
